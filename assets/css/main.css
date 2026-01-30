@@ -1,96 +1,222 @@
-/* Base reset */
-* {
+/* =========================================================
+   Base reset & defaults
+   ========================================================= */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   color: #222;
-  background: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
-/* Layout */
+/* =========================================================
+   Typography
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  margin-top: 0;
+  color: #111;
+}
+
+h1 {
+  font-size: 2.75rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: #1f2933;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #000;
+}
+
+/* =========================================================
+   Layout
+   ========================================================= */
+
 .hero {
-  padding: 4rem 1rem;
+  padding: 4rem 1rem 3.5rem;
   text-align: center;
-  background: #1f2933;
+  background-color: #1f2933;
   color: #fff;
 }
 
 .hero h1 {
-  margin: 0;
-  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  color: #fff;
 }
 
 .tagline {
-  max-width: 40rem;
-  margin: 1rem auto 2rem;
-  font-size: 1.2rem;
+  max-width: 42rem;
+  margin: 0 auto 2rem;
+  font-size: 1.15rem;
   color: #d1d5db;
 }
 
 .content {
-  max-width: 50rem;
+  max-width: 52rem;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
 }
 
 section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
-h2 {
-  margin-top: 0;
-}
+/* =========================================================
+   Buttons & calls to action
+   ========================================================= */
 
-/* Buttons */
 .button {
   display: inline-block;
-  padding: 0.75rem 1.25rem;
-  text-decoration: none;
+  padding: 0.75rem 1.4rem;
   border-radius: 4px;
   font-weight: 600;
+  text-decoration: none;
+  border: none;
 }
 
 .button.primary {
-  background: #eab308;
+  background-color: #eab308;
   color: #111;
 }
 
 .button.primary:hover {
-  background: #facc15;
+  background-color: #facc15;
+  color: #000;
 }
 
-/* Lists */
+/* =========================================================
+   Feature lists
+   ========================================================= */
+
 .feature-list {
-  padding-left: 1.2rem;
+  list-style: disc;
 }
 
 .feature-list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
-/* Footer */
+/* =========================================================
+   Placeholder / muted sections
+   ========================================================= */
+
+.placeholder {
+  padding: 1.25rem;
+  background-color: #f1f1f1;
+  border-left: 4px solid #ccc;
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
 footer {
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 2.5rem;
   text-align: center;
   font-size: 0.9rem;
   color: #555;
+  background-color: #f3f3f3;
 }
 
-/* Print-friendly defaults */
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer a {
+  color: inherit;
+}
+
+footer a:hover {
+  color: #000;
+}
+
+/* Support link (Buy me a beer) */
+footer .support {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+footer .support a {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   Print styles (DM-friendly)
+   ========================================================= */
+
 @media print {
   body {
     background: #fff;
     color: #000;
   }
+
   .hero {
     background: none;
     color: #000;
+    padding: 2rem 0;
   }
+
+  .hero h1,
+  .tagline {
+    color: #000;
+  }
+
   .button {
     display: none;
   }
+
+  footer {
+    display: none;
+  }
 }
+
+/* =========================================================
+   Future expansion notes
+   ========================================================= */
+/*
+  Reserved class ideas you can add later without refactors:
+
+  .nav
+  .adventure-card
+  .tag
+  .dm-note
+  .read-aloud
+  .stat-block
+*/
