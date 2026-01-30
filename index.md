@@ -1,2 +1,0 @@
-# McGravel
-Site coming soon.
