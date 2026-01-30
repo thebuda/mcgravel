@@ -216,3 +216,126 @@ footer .support a{
   .content{ max-width: 100%; padding: 0; }
   .placeholder{ border-color: #999; }
 }
+
+/* =========================================================
+   3x5 Monster Card (Option A)
+   ========================================================= */
+
+.card-3x5 {
+  max-width: 30rem;
+  margin: 1.5rem 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--rust);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.85rem;
+  color: var(--ink);
+}
+
+.sb-top {
+  display: grid;
+  gap: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.sb-name {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+
+.sb-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.sb-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.sb-abilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.sb-k {
+  font-weight: 700;
+}
+
+.sb-line {
+  margin: 0.2rem 0;
+  font-size: 0.92rem;
+}
+
+.sb-section {
+  margin-top: 0.6rem;
+}
+
+.sb-h {
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #3a2a1e;
+  margin-bottom: 0.2rem;
+}
+
+.sb-item {
+  font-size: 0.92rem;
+  margin-bottom: 0.25rem;
+}
+
+.sb-n {
+  font-weight: 800;
+}
+
+/* =========================================================
+   Print only the 3x5 card
+   - Prints landscape 3x5 (5in x 3in)
+   - Hides everything except #card-3x5
+   ========================================================= */
+
+@media print {
+  @page {
+    size: 5in 3in;
+    margin: 0.15in;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #card-3x5,
+  #card-3x5 * {
+    visibility: visible !important;
+  }
+
+  #card-3x5 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  a[href]:after {
+    content: "";
+  }
+}
