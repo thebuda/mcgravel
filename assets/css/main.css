@@ -108,17 +108,41 @@ section {
   border-radius: 4px;
   font-weight: 600;
   text-decoration: none;
-  border: none;
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #111;
+  margin: 0 0.4rem;
 }
 
+.button:hover {
+  border-color: #94a3b8;
+}
+
+/* Primary CTA */
 .button.primary {
   background-color: #eab308;
+  border-color: #eab308;
   color: #111;
 }
 
 .button.primary:hover {
   background-color: #facc15;
+  border-color: #facc15;
   color: #000;
+}
+
+/* Hero-specific button tweaks */
+.hero .button {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.hero .button:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.hero .button.primary {
+  color: #111;
 }
 
 /* =========================================================
@@ -215,6 +239,7 @@ footer .support a {
 
   .nav
   .adventure-card
+  .monster-card
   .tag
   .dm-note
   .read-aloud
