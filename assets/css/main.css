@@ -304,28 +304,27 @@ footer .support a{
 }
 
 /* =========================================================
-   Print only the 3x5 card
-   - Prints landscape 3x5 (5in x 3in)
-   - Hides everything except #card-3x5
+   Print 3x5 card mode (activated by body.print-card)
    ========================================================= */
 
-/* IMPORTANT: keep @page at top-level for better browser support */
+/* Keep @page top-level for best support */
 @page {
   size: 5in 3in;
   margin: 0.15in;
 }
 
 @media print {
-  body * {
+  /* Only do special behavior when user clicked the print button */
+  body.print-card * {
     visibility: hidden !important;
   }
 
-  #card-3x5,
-  #card-3x5 * {
+  body.print-card #card-3x5,
+  body.print-card #card-3x5 * {
     visibility: visible !important;
   }
 
-  #card-3x5 {
+  body.print-card #card-3x5 {
     position: absolute !important;
     left: 0 !important;
     top: 0 !important;
@@ -336,8 +335,9 @@ footer .support a{
     border-radius: 0 !important;
   }
 
-  a[href]:after {
+  body.print-card a[href]:after {
     content: "" !important;
   }
 }
+
 

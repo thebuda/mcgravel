@@ -34,9 +34,11 @@ layout: default
 <main class="content">
   
   <p>
-    <button class="button primary" type="button" onclick="window.print()">
-      Print 3×5 Card
-    </button>
+		<button class="button primary" type="button"
+			onclick="document.body.classList.add('print-card'); window.print(); document.body.classList.remove('print-card');">
+			Print 3×5 Card
+		</button>
+
   </p>
 
   {{ content }}
