@@ -207,6 +207,97 @@ footer .support a{
   text-decoration-color: rgba(180,83,9,0.55);
 }
 
+/* =========================================================
+   Statblock Component (Standard)
+   ========================================================= */
+
+.statblock {
+  margin: 1.25rem 0 1.75rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--rust);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.sb-head {
+  display: grid;
+  gap: 0.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.sb-title {
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.sb-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.sb-panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  margin: 0.65rem 0;
+}
+
+.sb-row {
+  font-size: 0.98rem;
+  margin: 0.25rem 0;
+}
+
+.sb-k {
+  font-weight: 800;
+}
+
+.sb-abilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem 0.75rem;
+}
+
+.sb-ability {
+  font-size: 0.98rem;
+}
+
+.sb-lines {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.sb-line {
+  margin: 0.25rem 0;
+  font-size: 0.98rem;
+}
+
+.sb-section {
+  margin-top: 0.85rem;
+}
+
+.sb-h {
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3a2a1e;
+  margin-bottom: 0.35rem;
+}
+
+.sb-item {
+  font-size: 0.98rem;
+  margin-bottom: 0.35rem;
+}
+
+.sb-n {
+  font-weight: 900;
+}
+
+
 /* ---------- Print (DM-friendly) ---------- */
 @media print{
   body{ background: #fff; color: #000; }
