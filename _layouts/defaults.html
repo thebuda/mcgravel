@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page.title }}{% if page.title and page.title != site.title %} — {{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.description | default: site.description | default: '' }}" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+
+  {{ content }}
+
+  <footer>
+    <p>Content © McGravel. Use at your table, reshare with attribution.</p>
+    <p class="support">
+      If you find this useful, you can
+      <a href="https://buymeacoffee.com/mcgravel" target="_blank" rel="noopener">buy me a beer</a>.
+    </p>
+    <p><a href="https://github.com/thebuda/mcgravel">View on GitHub</a></p>
+  </footer>
+
+</body>
+</html>

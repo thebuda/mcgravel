@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand">
+      <div class="avatar">
+        <picture>
+          <source srcset="/assets/images/mcgravel-avatar-256.webp" type="image/webp">
+          <img src="/assets/images/mcgravel-avatar-256.jpg" alt="McGravel profile portrait">
+        </picture>
+      </div>
+
+      <div>
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}
+          <p class="tagline">{{ page.subtitle }}</p>
+        {% else %}
+          <p class="tagline">A McGravel monster for fast table use.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="button primary" href="/monsters/">Back to Monsters</a>
+      <a class="button" href="/">Home</a>
+    </div>
+  </div>
+</header>
+
+<main class="content">
+  {{ content }}
+</main>
