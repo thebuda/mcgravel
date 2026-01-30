@@ -1,247 +1,218 @@
 /* =========================================================
-   Base reset & defaults
+   McGravel Theme — forge-light + soot + parchment
    ========================================================= */
 
+/* ---------- Reset ---------- */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
+*::after { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+:root{
+  /* Core palette (aligned to your profile pic) */
+  --bg:        #f8f6f2;  /* ash paper */
+  --paper:     #f3efe9;  /* warm parchment */
+  --ink:       #111111;  /* near-black */
+  --muted:     #6b625a;  /* warm gray */
+  --soot:      #1f2933;  /* deep charcoal */
+  --leather:   #2a1f16;  /* warm dark brown */
+  --rust:      #b45309;  /* iron oxide */
+  --forge:     #eab308;  /* forge gold */
+  --ember:     #facc15;  /* bright ember */
+  --line:      #d6c7b6;  /* warm border */
+
+  /* Layout */
+  --radius: 10px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.12);
+  --maxw:   56rem;
 }
 
-html {
-  font-size: 16px;
-}
-
-body {
+/* ---------- Base ---------- */
+body{
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
                "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  color: #222;
-  background-color: #f8f8f8;
+  color: var(--ink);
+  background: var(--bg);
 }
 
-/* =========================================================
-   Typography
-   ========================================================= */
+img{ max-width: 100%; height: auto; }
 
-h1,
-h2,
-h3,
-h4 {
-  line-height: 1.25;
-  margin-top: 0;
-  color: #111;
+a{
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(180,83,9,0.45);
+  text-underline-offset: 3px;
 }
 
-h1 {
-  font-size: 2.75rem;
+a:hover{
+  text-decoration-color: rgba(180,83,9,0.9);
 }
 
-h2 {
-  font-size: 1.75rem;
-  margin-bottom: 0.75rem;
+/* ---------- Typography ---------- */
+h1, h2, h3{
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
 }
 
-p {
-  margin: 0 0 1rem;
-}
+h1{ font-size: 2.75rem; letter-spacing: -0.02em; }
+h2{ font-size: 1.75rem; letter-spacing: -0.01em; }
+p { margin: 0 0 1rem; }
 
-ul {
+ul{
   margin: 0 0 1rem;
   padding-left: 1.25rem;
 }
 
-li {
-  margin-bottom: 0.5rem;
-}
+li{ margin-bottom: 0.5rem; }
 
-a {
-  color: #1f2933;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: #000;
-}
-
-/* =========================================================
-   Layout
-   ========================================================= */
-
-.hero {
-  padding: 4rem 1rem 3.5rem;
-  text-align: center;
-  background-color: #1f2933;
-  color: #fff;
-}
-
-.hero h1 {
-  margin-bottom: 0.75rem;
-  color: #fff;
-}
-
-.tagline {
-  max-width: 42rem;
-  margin: 0 auto 2rem;
-  font-size: 1.15rem;
-  color: #d1d5db;
-}
-
-.content {
-  max-width: 52rem;
+/* ---------- Layout containers ---------- */
+.content{
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 2.5rem 1rem;
+  padding: 2.5rem 1rem 3rem;
 }
 
-section {
-  margin-bottom: 3rem;
+section{ margin-bottom: 2.75rem; }
+
+/* ---------- Hero ---------- */
+.hero{
+  padding: 3.25rem 1rem 2.75rem;
+  text-align: center;
+  color: #fff;
+
+  /* forge-lit vignette (matches your profile pic lighting) */
+  background:
+    radial-gradient(circle at 50% 20%,
+      rgba(250,204,21,0.22) 0%,
+      rgba(180,83,9,0.18) 22%,
+      rgba(42,31,22,0.96) 48%,
+      rgba(31,41,51,1) 75%
+    );
+
+  border-bottom: 1px solid rgba(234,179,8,0.18);
 }
 
-/* =========================================================
-   Buttons & calls to action
-   ========================================================= */
+.hero-inner{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+}
 
-.button {
+.tagline{
+  max-width: 44rem;
+  margin: 0;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.82);
+}
+
+/* Avatar / brand mark */
+.brand{
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+
+.avatar{
+  width: 104px;
+  height: 104px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 2px solid rgba(250,204,21,0.35);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- CTAs ---------- */
+.cta-row{
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.button{
   display: inline-block;
-  padding: 0.75rem 1.4rem;
-  border-radius: 4px;
-  font-weight: 600;
+  padding: 0.78rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 650;
   text-decoration: none;
-  background: transparent;
-  border: 1px solid #cbd5e1;
-  color: #111;
-  margin: 0 0.4rem;
+  border: 1px solid rgba(255,255,255,0.26);
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(2px);
 }
 
-.button:hover {
-  border-color: #94a3b8;
+.button:hover{
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.10);
 }
 
 /* Primary CTA */
-.button.primary {
-  background-color: #eab308;
-  border-color: #eab308;
-  color: #111;
+.button.primary{
+  border-color: rgba(234,179,8,0.75);
+  background: linear-gradient(180deg, var(--ember), var(--forge));
+  color: #161616;
 }
 
-.button.primary:hover {
-  background-color: #facc15;
-  border-color: #facc15;
-  color: #000;
+.button.primary:hover{
+  background: linear-gradient(180deg, #ffe38a, var(--ember));
+  border-color: rgba(250,204,21,0.95);
 }
 
-/* Hero-specific button tweaks */
-.hero .button {
-  border-color: rgba(255, 255, 255, 0.35);
-  color: #fff;
-}
-
-.hero .button:hover {
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.hero .button.primary {
-  color: #111;
-}
-
-/* =========================================================
-   Feature lists
-   ========================================================= */
-
-.feature-list {
+/* ---------- Lists / callouts ---------- */
+.feature-list{
   list-style: disc;
 }
 
-.feature-list li {
-  margin-bottom: 0.6rem;
+/* Warm parchment callout */
+.placeholder{
+  padding: 1.25rem 1.25rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--rust);
+  border-radius: var(--radius);
 }
 
-/* =========================================================
-   Placeholder / muted sections
-   ========================================================= */
-
-.placeholder {
-  padding: 1.25rem;
-  background-color: #f1f1f1;
-  border-left: 4px solid #ccc;
-}
-
-/* =========================================================
-   Footer
-   ========================================================= */
-
-footer {
-  padding: 2rem 1rem 2.5rem;
+/* ---------- Footer ---------- */
+footer{
+  padding: 2.25rem 1rem 2.75rem;
   text-align: center;
-  font-size: 0.9rem;
-  color: #555;
-  background-color: #f3f3f3;
+  font-size: 0.92rem;
+  color: var(--muted);
+  background: #efe8df;
+  border-top: 1px solid var(--line);
 }
 
-footer p {
-  margin-bottom: 0.5rem;
+footer p{ margin: 0.35rem 0; }
+
+footer .support{
+  font-size: 0.88rem;
+  color: #5f564e;
 }
 
-footer a {
+footer .support a{
   color: inherit;
+  text-decoration-color: rgba(180,83,9,0.55);
 }
 
-footer a:hover {
-  color: #000;
+/* ---------- Print (DM-friendly) ---------- */
+@media print{
+  body{ background: #fff; color: #000; }
+  .hero{ background: none; color: #000; border: none; padding: 1.5rem 0; }
+  .tagline{ color: #000; }
+  .button, footer, .avatar{ display: none !important; }
+  .content{ max-width: 100%; padding: 0; }
+  .placeholder{ border-color: #999; }
 }
-
-/* Support link (Buy me a beer) */
-footer .support {
-  font-size: 0.85rem;
-  color: #666;
-}
-
-footer .support a {
-  text-decoration: underline;
-}
-
-/* =========================================================
-   Print styles (DM-friendly)
-   ========================================================= */
-
-@media print {
-  body {
-    background: #fff;
-    color: #000;
-  }
-
-  .hero {
-    background: none;
-    color: #000;
-    padding: 2rem 0;
-  }
-
-  .hero h1,
-  .tagline {
-    color: #000;
-  }
-
-  .button {
-    display: none;
-  }
-
-  footer {
-    display: none;
-  }
-}
-
-/* =========================================================
-   Future expansion notes
-   ========================================================= */
-/*
-  Reserved class ideas you can add later without refactors:
-
-  .nav
-  .adventure-card
-  .monster-card
-  .tag
-  .dm-note
-  .read-aloud
-  .stat-block
-*/
