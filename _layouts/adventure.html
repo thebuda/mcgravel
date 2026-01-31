@@ -1,0 +1,124 @@
+---
+layout: null
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page.title }} — McGravel</title>
+  {% if page.description %}
+    <meta name="description" content="{{ page.description | escape }}" />
+  {% endif %}
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+
+      <div class="brand">
+        <div class="avatar">
+          <picture>
+            <source srcset="/assets/images/mcgravel-avatar-256.webp" type="image/webp">
+            <img src="/assets/images/mcgravel-avatar-256.jpg" alt="McGravel profile portrait">
+          </picture>
+        </div>
+
+        <div>
+          <p class="kicker"><a href="/adventures/">← All Adventures</a></p>
+          <h1>{{ page.title }}</h1>
+          {% if page.subtitle %}
+            <p class="tagline">{{ page.subtitle }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="button" href="/adventures/">Back to Adventures</a>
+        <a class="button" href="/monsters/">Browse Monsters</a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="content">
+
+    <!-- At-a-glance meta -->
+    <section class="adventure-meta card">
+      <div class="card-meta">
+        {% if page.level %}
+          <span><strong>Level:</strong>
+            {% if page.level.size %}
+              {{ page.level | join: "–" }}
+            {% else %}
+              {{ page.level }}
+            {% endif %}
+          </span>
+        {% endif %}
+
+        {% if page.runtime %}
+          <span><strong>Runtime:</strong> {{ page.runtime }}</span>
+        {% endif %}
+
+        {% if page.setting %}
+          <span><strong>Setting:</strong> {{ page.setting }}</span>
+        {% endif %}
+
+        {% if page.environment %}
+          <span><strong>Environment:</strong> {{ page.environment }}</span>
+        {% endif %}
+      </div>
+
+      {% if page.theme %}
+        <div class="card-tags">
+          {% for t in page.theme %}
+            <span class="tag">{{ t }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if page.factions or page.creatures %}
+        <div class="meta-lists">
+          {% if page.factions %}
+            <p class="meta-list"><strong>Factions:</strong>
+              {% for f in page.factions %}
+                {{ f }}{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            </p>
+          {% endif %}
+
+          {% if page.creatures %}
+            <p class="meta-list"><strong>Creatures:</strong>
+              {% for c in page.creatures %}
+                {{ c }}{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            </p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </section>
+
+    <!-- Adventure body -->
+    <article class="prose adventure-body">
+      {{ content }}
+    </article>
+
+    <nav class="page-nav">
+      <a class="button" href="/adventures/">← Back to Adventures</a>
+    </nav>
+
+  </main>
+
+  <footer>
+    <p>Content © McGravel. Use at your table, reshare with attribution.</p>
+    <p class="support">
+      If you find this useful, you can
+      <a href="https://buymeacoffee.com/mcgravel" target="_blank" rel="noopener">buy me a beer</a>.
+    </p>
+    <p><a href="https://github.com/thebuda/mcgravel">View on GitHub</a></p>
+  </footer>
+
+</body>
+</html>
