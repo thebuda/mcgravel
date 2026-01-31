@@ -220,6 +220,10 @@ footer .support a{
   border-radius: 6px;               /* less modern */
   box-shadow: none;                 /* old-school = flatter */
   padding: 0.75rem 0.85rem;
+
+  /* Helpful for printing + multi-column layouts */
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 
 .sb-head {
@@ -346,17 +350,92 @@ footer .support a{
 }
 
 /* =========================================================
-   Print (DM-friendly)
-   - Simple: prints page content cleanly
-   - We'll re-introduce 3x5 card printing after markup is final
+   Print: 3x5 Stat Card
+   - Prints each .statblock as its own 3x5 card (landscape)
    ========================================================= */
 
 @media print{
-  body{ background: #fff; color: #000; }
-  .hero{ background: none !important; color: #000; border: none; padding: 1.5rem 0; }
-  .tagline{ color: #000 !important; }
-  .button, footer, .avatar{ display: none !important; }
-  .content{ max-width: 100%; padding: 0; }
-  .placeholder{ border-color: #999; }
+  /* Force index-card paper size. Many browsers respect this when printing to PDF. */
+  @page{
+    size: 5in 3in;
+    margin: 0.15in;
+  }
+
+  /* Kill site chrome */
+  body{ background: #fff; color: #000; margin: 0; }
+  .hero, .cta-row, footer, .avatar, .placeholder { display: none !important; }
   a[href]:after { content: ""; }
+
+  /* Remove outer layout padding so the card uses the page */
+  .content{
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Print each statblock as one card */
+  .statblock{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0.18in 0.20in;
+
+    /* Keep the “spine” but avoid heavy ink */
+    border: 1px solid #000;
+    border-left-width: 0.06in;
+    border-left-color: #000;
+
+    border-radius: 0;      /* printers + cards tend to look cleaner squared */
+    box-shadow: none;
+
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Tighten typography to fit 3x5 reliably */
+  .sb-title{ font-size: 0.95rem; line-height: 1.05; }
+  .sb-meta{ font-size: 0.72rem; }
+  .sb-row, .sb-line, .sb-item{ font-size: 0.72rem; line-height: 1.15; }
+
+  .sb-panel{
+    padding: 0.22rem 0.28rem;
+    margin: 0.22rem 0;
+    border-color: #000;
+    background: #fff; /* reduces “gray wash” on cheaper printers */
+  }
+
+  .sb-section{
+    margin-top: 0.35rem;
+    padding-top: 0.25rem;
+    border-top-color: #000;
+  }
+
+  .sb-h{
+    font-size: 0.62rem;
+    margin-bottom: 0.12rem;
+    letter-spacing: 0.12em;
+    color: #000;
+  }
+
+  .sb-ability-table{
+    margin: 0.22rem 0;
+    font-size: 0.68rem;
+    border-color: #000;
+    border-radius: 0;
+  }
+
+  .sb-ability-row{
+    grid-template-columns: 2.2rem 1fr 1fr 1fr;
+  }
+
+  .sb-ability-row > div{
+    padding: 0.16rem 0.18rem;
+    border-right-color: #000;
+  }
+
+  .sb-ability-header,
+  .sb-ability-name{
+    background: #fff;
+    color: #000;
+  }
 }
