@@ -1,101 +1,74 @@
 ---
 layout: monster
 title: Barkeeper
-category: humanoid
-type: Humanoid (any race)
-alignment: Any
-cr: 1/4
-environment:
-  - urban
-  - tavern
-tags:
-  - npc
-  - social
----
+subtitle: A silver-tongued tavern hand who knows every table, door, and hiding spot.
+description: A commoner-plus NPC built for fast table use, with a home-field edge inside their own bar.
+permalink: /monsters/barkeeper/
+tags: [npc, humanoid, social, urban]
+role: controller
 
-## Barkeeper
+# Statblock data (auto-rendered by monster.html)
+size: Medium
+creature_type: humanoid (any race)
+alignment: any
 
-A barkeeper is equal parts host, peacekeeper, and information broker. Years behind the bar have sharpened their tongue, their instincts, and their awareness of every chair, table, and doorway in the room.
+ac: 12 (leather apron)
+hp: 9 (2d8)
+speed: 30 ft.
 
-When trouble starts, a barkeeper doesn’t panic—they lean on experience, familiarity, and a well-placed blade.
+abilities:
+  str: { score: 10, mod: "+0", save: "+0" }
+  dex: { score: 12, mod: "+1", save: "+1" }
+  con: { score: 11, mod: "+0", save: "+0" }
+  int: { score: 10, mod: "+0", save: "+0" }
+  wis: { score: 11, mod: "+0", save: "+0" }
+  cha: { score: 14, mod: "+2", save: "+2" }
 
----
+skills: Insight +2, Persuasion +4
+senses: passive Perception 10
+languages: Common plus one other
+cr: 1/4 (50 XP)
 
-<table class="stat-block">
-  <tr>
-    <th>Armor Class</th>
-    <td>12 (leather apron)</td>
-  </tr>
-  <tr>
-    <th>Hit Points</th>
-    <td>9 (2d8)</td>
-  </tr>
-  <tr>
-    <th>Speed</th>
-    <td>30 ft.</td>
-  </tr>
-</table>
+traits:
+  - name: Master of the Bar
+    text: >
+      While inside their own tavern or bar, the barkeeper has advantage on Dexterity (Acrobatics) checks and on opportunity attacks.
+      In addition, difficult terrain caused by furniture doesn’t cost the barkeeper extra movement.
 
-<table class="stat-block ability-scores">
-  <tr>
-    <th>STR</th>
-    <th>DEX</th>
-    <th>CON</th>
-    <th>INT</th>
-    <th>WIS</th>
-    <th>CHA</th>
-  </tr>
-  <tr>
-    <td>10 (+0)</td>
-    <td>12 (+1)</td>
-    <td>11 (+0)</td>
-    <td>10 (+0)</td>
-    <td>11 (+0)</td>
-    <td>14 (+2)</td>
-  </tr>
-</table>
+  - name: Disarming Presence
+    text: >
+      The barkeeper has advantage on Charisma (Persuasion) checks made to calm hostile creatures that can hear them,
+      provided the barkeeper and the target aren’t already engaged in combat.
 
-<table class="stat-block">
-  <tr>
-    <th>Skills</th>
-    <td>Insight +2, Persuasion +4</td>
-  </tr>
-  <tr>
-    <th>Senses</th>
-    <td>Passive Perception 10</td>
-  </tr>
-  <tr>
-    <th>Languages</th>
-    <td>Common plus one other</td>
-  </tr>
-  <tr>
-    <th>Challenge</th>
-    <td>1/4 (50 XP)</td>
-  </tr>
-</table>
+actions:
+  - name: Dagger
+    text: >
+      <em>Melee or Ranged Weapon Attack:</em> +3 to hit, reach 5 ft. or range 20/60 ft., one target.
+      <em>Hit:</em> 4 (1d4 + 2) piercing damage.
+
+  - name: Improvised Strike
+    text: >
+      <em>Melee Weapon Attack:</em> +2 to hit, reach 5 ft., one target.
+      <em>Hit:</em> 2 (1d4) bludgeoning damage. This often represents a tankard, bottle, ladle, or chair-leg.
 
 ---
 
-### Traits
+## At a glance
+- **Role:** Controller (de-escalation + positioning)
+- **Threat:** Low (but annoying on home turf)
+- **Environment:** Taverns, inns, docks, back alleys
+- **Signature:** Home-field advantage inside their own bar
 
-**Master of the Bar.**  
-While inside their own tavern or bar, the barkeeper has advantage on Dexterity (Acrobatics) checks and opportunity attacks. In addition, difficult terrain caused by furniture does not slow the barkeeper’s movement.
+## Tactics
+- Try to **talk first**. The barkeeper’s goal is to stop a fight, not win one.
+- If blades come out, fight **near furniture**—use tight angles and opportunity attacks.
+- Use **Improvised Strike** when you want a nonlethal tavern-brawl vibe.
 
-**Disarming Presence.**  
-The barkeeper has advantage on Charisma (Persuasion) checks made to calm hostile creatures that can hear them and are not already engaged in combat.
+## Encounter hooks
+- The barkeeper recognizes one PC from a past incident—and isn’t sure whether to help or sell them out.
+- A regular vanished; the barkeeper knows who they left with, but won’t talk without leverage.
+- Someone is paying for information from this bar, and the barkeeper is stuck in the middle.
 
----
-
-### Actions
-
-**Dagger.** *Melee or Ranged Weapon Attack:* +3 to hit, reach 5 ft. or range 20/60 ft., one target.  
-*Hit:* 4 (1d4 + 2) piercing damage.
-
-**Improvised Strike.** *Melee Weapon Attack:* +2 to hit, reach 5 ft., one target.  
-*Hit:* 2 (1d4) bludgeoning damage. This attack often represents tankards, bottles, or a heavy ladle.
-
----
-
-### Tactics
-
-A barkeeper avoids fair fights. They move through tight spaces, use furniture as cover, and try to de-escalate before steel is drawn. If forced into combat, they strike quickly and look for an opening to escape or call for help.
+## Variants
+- **Hardcase Barkeeper (tougher):** HP 13 (3d8); add Athletics +3; Master of the Bar also grants advantage on Dexterity saving throws while in the bar.
+- **Well-Connected Owner (social):** Replace Dagger with a light crossbow behind the counter; add Deception +4; Disarming Presence works even if a fight has started (once per scene, one creature that can hear them).

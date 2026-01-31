@@ -34,25 +34,224 @@ layout: default
 
 <main class="content">
 
-  {% if page.role or page.tags %}
-    <section class="placeholder" style="padding: 0.85rem 1rem;">
-      {% if page.role %}
-        <p style="margin: 0 0 0.25rem;">
-          <strong>Role:</strong> {{ page.role | capitalize }}
-        </p>
-      {% endif %}
+  {%- comment -%}
+  Meta strip: supports both your newer fields (role/tags/subtitle) and older ones (type/alignment/cr/environment).
+  {%- endcomment -%}
+  {% assign has_meta = false %}
+  {% if page.role or page.tags or page.type or page.alignment or page.cr or page.environment or page.category %}
+    {% assign has_meta = true %}
+  {% endif %}
 
-      {% if page.tags %}
-        <p style="margin: 0;">
-          <strong>Tags:</strong>
-          {% for tag in page.tags %}
-            {{ tag }}{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
-        </p>
-      {% endif %}
+  {% if has_meta %}
+    <section class="monster-meta placeholder" style="padding: 0.85rem 1rem;">
+      <div class="monster-meta-grid" style="display: grid; gap: 0.35rem;">
+
+        {% if page.role %}
+          <div><strong>Role:</strong> {{ page.role | capitalize }}</div>
+        {% endif %}
+
+        {% if page.type %}
+          <div><strong>Type:</strong> {{ page.type }}</div>
+        {% elsif page.category %}
+          <div><strong>Type:</strong> {{ page.category | capitalize }}</div>
+        {% endif %}
+
+        {% if page.alignment %}
+          <div><strong>Alignment:</strong> {{ page.alignment }}</div>
+        {% endif %}
+
+        {% if page.cr %}
+          <div><strong>CR:</strong> {{ page.cr }}</div>
+        {% endif %}
+
+        {% if page.environment %}
+          <div>
+            <strong>Environment:</strong>
+            {% if page.environment.first %}
+              {% for env in page.environment %}
+                {{ env }}{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            {% else %}
+              {{ page.environment }}
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if page.tags %}
+          <div>
+            <strong>Tags:</strong>
+            {% for tag in page.tags %}
+              {{ tag }}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </div>
     </section>
   {% endif %}
 
-  {{ content }}
+  {%- comment -%}
+  Statblock rendering rules:
+  1) If the page content already includes Ember Mole-style statblock HTML (class="statblock"), do nothing special.
+  2) Otherwise, if front matter includes simple stat fields (ac/hp/speed/etc), auto-render the Ember Mole statblock.
+  {%- endcomment -%}
+
+  {% assign content_has_statblock = false %}
+  {% if content contains 'class="statblock"' %}
+    {% assign content_has_statblock = true %}
+  {% endif %}
+
+  {% assign can_autoblock = false %}
+  {% if page.ac or page.hp or page.speed or page.size or page.creature_type or page.statblock_html %}
+    {% assign can_autoblock = true %}
+  {% endif %}
+
+  <div class="monster-layout" style="display: grid; gap: 1.25rem; grid-template-columns: 1fr;">
+    {%- comment -%}
+    On wide screens, show an aside when we can auto-render a statblock and the content doesn't already include one.
+    (Your CSS can override these inline rules; they’re just safe defaults.)
+    {%- endcomment -%}
+
+    {% if content_has_statblock or can_autoblock == false %}
+      <article class="monster-article">
+        {{ content }}
+      </article>
+    {% else %}
+      <div class="monster-layout-two" style="display: grid; gap: 1.25rem; align-items: start; grid-template-columns: 1fr;">
+        <article class="monster-article">
+          {{ content }}
+        </article>
+
+        <aside class="monster-aside">
+
+          {% if page.statblock_html %}
+            {{ page.statblock_html }}
+          {% else %}
+            <div class="statblock" role="group" aria-label="{{ page.title }} stat block">
+              <div class="sb-head">
+                <div class="sb-title">{{ page.title }}</div>
+                <div class="sb-meta">
+                  {% if page.size %}{{ page.size }} {% endif %}
+                  {% if page.creature_type %}{{ page.creature_type }}{% elsif page.type %}{{ page.type }}{% endif %}
+                  {% if page.alignment %} • {{ page.alignment | downcase }}{% endif %}
+                </div>
+              </div>
+
+              <div class="sb-panel">
+                {% if page.ac %}<div class="sb-row"><span class="sb-k">AC</span> {{ page.ac }}</div>{% endif %}
+                {% if page.hp %}<div class="sb-row"><span class="sb-k">HP</span> {{ page.hp }}</div>{% endif %}
+                {% if page.speed %}<div class="sb-row"><span class="sb-k">Speed</span> {{ page.speed }}</div>{% endif %}
+              </div>
+
+              {% if page.abilities %}
+                <div class="sb-section">
+                  <div class="sb-h">Abilities</div>
+
+                  <div class="sb-ability-table" aria-label="Ability Scores">
+                    <div class="sb-ability-row sb-ability-header">
+                      <div></div>
+                      <div>Score</div>
+                      <div>Mod</div>
+                      <div>Save</div>
+                    </div>
+
+                    {% assign abil_order = "str,dex,con,int,wis,cha" | split: "," %}
+                    {% for a in abil_order %}
+                      {% assign A = page.abilities[a] %}
+                      {% if A %}
+                        <div class="sb-ability-row">
+                          <div class="sb-ability-name">{{ a | upcase }}</div>
+                          <div>{{ A.score }}</div>
+                          <div>{{ A.mod }}</div>
+                          <div>{% if A.save %}{{ A.save }}{% else %}{{ A.mod }}{% endif %}</div>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+
+              {% assign has_lines = false %}
+              {% if page.skills or page.senses or page.languages or page.cr %}
+                {% assign has_lines = true %}
+              {% endif %}
+
+              {% if has_lines %}
+                <div class="sb-lines">
+                  {% if page.skills %}<div class="sb-line"><span class="sb-k">Skills</span> {{ page.skills }}</div>{% endif %}
+                  {% if page.senses %}<div class="sb-line"><span class="sb-k">Senses</span> {{ page.senses }}</div>{% endif %}
+                  {% if page.languages %}<div class="sb-line"><span class="sb-k">Languages</span> {{ page.languages }}</div>{% endif %}
+                  {% if page.cr %}<div class="sb-line"><span class="sb-k">CR</span> {{ page.cr }}</div>{% endif %}
+                </div>
+              {% endif %}
+
+              {% if page.traits %}
+                <div class="sb-section">
+                  <div class="sb-h">Traits</div>
+                  {% for t in page.traits %}
+                    <div class="sb-item">
+                      <span class="sb-n">{{ t.name }}</span>
+                      {{ t.text }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if page.actions %}
+                <div class="sb-section">
+                  <div class="sb-h">Actions</div>
+                  {% for act in page.actions %}
+                    <div class="sb-item">
+                      <span class="sb-n">{{ act.name }}</span>
+                      {{ act.text }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if page.reactions %}
+                <div class="sb-section">
+                  <div class="sb-h">Reactions</div>
+                  {% for r in page.reactions %}
+                    <div class="sb-item">
+                      <span class="sb-n">{{ r.name }}</span>
+                      {{ r.text }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if page.bonus_actions %}
+                <div class="sb-section">
+                  <div class="sb-h">Bonus Actions</div>
+                  {% for b in page.bonus_actions %}
+                    <div class="sb-item">
+                      <span class="sb-n">{{ b.name }}</span>
+                      {{ b.text }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+            </div>
+          {% endif %}
+
+        </aside>
+      </div>
+
+      <style>
+        /* Safe responsive default: two columns on wider screens */
+        @media (min-width: 900px) {
+          .monster-layout-two {
+            grid-template-columns: 1fr 360px !important;
+          }
+          .monster-aside {
+            position: sticky;
+            top: 1rem;
+          }
+        }
+      </style>
+    {% endif %}
+  </div>
 
 </main>
