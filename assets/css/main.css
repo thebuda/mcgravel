@@ -208,227 +208,155 @@ footer .support a{
 }
 
 /* =========================================================
-   Statblock Component (Standard)
+   Statblock Component (Old-School / Tight)
    ========================================================= */
 
 .statblock {
-  margin: 1.25rem 0 1.75rem;
+  margin: 1rem 0 1.25rem;
   background: #fff;
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--rust);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1rem;
+  border: 2px solid #3a2a1e;         /* dark ink border */
+  border-left-width: 6px;            /* stronger “book spine” */
+  border-left-color: var(--rust);    /* forge accent */
+  border-radius: 6px;               /* less modern */
+  box-shadow: none;                 /* old-school = flatter */
+  padding: 0.75rem 0.85rem;
 }
 
 .sb-head {
   display: grid;
-  gap: 0.15rem;
-  margin-bottom: 0.75rem;
+  gap: 0.1rem;
+  margin-bottom: 0.45rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(58,42,30,0.35);
 }
 
 .sb-title {
   font-weight: 900;
-  letter-spacing: -0.01em;
-  font-size: 1.35rem;
-  line-height: 1.1;
+  letter-spacing: 0.01em;
+  font-size: 1.2rem;
+  line-height: 1.05;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .sb-meta {
-  color: var(--muted);
-  font-size: 0.95rem;
+  color: #4b3a2c;
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .sb-panel {
   background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.65rem 0.75rem;
-  margin: 0.65rem 0;
+  border: 1px solid rgba(58,42,30,0.35);
+  border-radius: 6px;
+  padding: 0.5rem 0.6rem;
+  margin: 0.5rem 0;
 }
 
 .sb-row {
-  font-size: 0.98rem;
-  margin: 0.25rem 0;
+  font-size: 0.93rem;
+  margin: 0.15rem 0;
+  line-height: 1.25;
 }
 
 .sb-k {
-  font-weight: 800;
-}
-
-.sb-abilities {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.35rem 0.75rem;
-}
-
-.sb-ability {
-  font-size: 0.98rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
 }
 
 .sb-lines {
-  margin: 0.5rem 0 0.25rem;
+  margin: 0.35rem 0 0.15rem;
 }
 
 .sb-line {
-  margin: 0.25rem 0;
-  font-size: 0.98rem;
+  margin: 0.12rem 0;
+  font-size: 0.93rem;
+  line-height: 1.25;
 }
 
 .sb-section {
-  margin-top: 0.85rem;
+  margin-top: 0.55rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid rgba(58,42,30,0.25);
 }
 
 .sb-h {
   font-weight: 900;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   color: #3a2a1e;
-  margin-bottom: 0.35rem;
-}
-
-.sb-item {
-  font-size: 0.98rem;
-  margin-bottom: 0.35rem;
-}
-
-.sb-n {
-  font-weight: 900;
-}
-
-
-/* ---------- Print (DM-friendly) ---------- */
-@media print{
-  body{ background: #fff; color: #000; }
-  .hero{ background: none; color: #000; border: none; padding: 1.5rem 0; }
-  .tagline{ color: #000; }
-  .button, footer, .avatar{ display: none !important; }
-  .content{ max-width: 100%; padding: 0; }
-  .placeholder{ border-color: #999; }
-}
-
-/* =========================================================
-   3x5 Monster Card (Option A)
-   ========================================================= */
-
-.card-3x5 {
-  max-width: 30rem;
-  margin: 1.5rem 0;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--rust);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 0.85rem;
-  color: var(--ink);
-}
-
-.sb-top {
-  display: grid;
-  gap: 0.15rem;
-  margin-bottom: 0.5rem;
-}
-
-.sb-name {
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  font-size: 1.15rem;
-  line-height: 1.1;
-}
-
-.sb-sub {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.sb-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.25rem;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-
-.sb-abilities {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.25rem 0.5rem;
-  margin: 0.5rem 0;
-}
-
-.sb-k {
-  font-weight: 700;
-}
-
-.sb-line {
-  margin: 0.2rem 0;
-  font-size: 0.92rem;
-}
-
-.sb-section {
-  margin-top: 0.6rem;
-}
-
-.sb-h {
-  font-weight: 800;
-  font-size: 0.92rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #3a2a1e;
-  margin-bottom: 0.2rem;
-}
-
-.sb-item {
-  font-size: 0.92rem;
   margin-bottom: 0.25rem;
 }
 
+.sb-item {
+  font-size: 0.93rem;
+  line-height: 1.25;
+  margin-bottom: 0.18rem;
+}
+
 .sb-n {
-  font-weight: 800;
+  font-weight: 900;
 }
 
 /* =========================================================
-   Print 3x5 card mode (activated by body.print-card)
+   Ability Table (DM At-a-Glance)
+   - Score / Mod / Save grid like your reference image
    ========================================================= */
 
-/* Keep @page top-level for best support */
-@page {
-  size: 5in 3in;
-  margin: 0.15in;
+.sb-ability-table {
+  margin: 0.6rem 0;
+  border: 1px solid rgba(58,42,30,0.35);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.9rem;
 }
 
-@media print {
-  /* Only do special behavior when user clicked the print button */
-  body.print-card * {
-    visibility: hidden !important;
-  }
-
-  body.print-card #card-3x5,
-  body.print-card #card-3x5 * {
-    visibility: visible !important;
-  }
-
-  body.print-card #card-3x5 {
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-  }
-
-  body.print-card a[href]:after {
-    content: "" !important;
-  }
+.sb-ability-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr 1fr 1fr;
+  text-align: center;
 }
 
+.sb-ability-row > div {
+  padding: 0.3rem 0.35rem;
+  border-right: 1px solid rgba(58,42,30,0.25);
+}
 
+.sb-ability-row > div:last-child {
+  border-right: none;
+}
+
+.sb-ability-header {
+  background: var(--paper);
+  font-weight: 900;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: #3a2a1e;
+}
+
+.sb-ability-row:not(.sb-ability-header):nth-child(even) {
+  background: #faf7f2;
+}
+
+.sb-ability-name {
+  font-weight: 900;
+  letter-spacing: 0.10em;
+  background: #efe6da;
+}
+
+/* =========================================================
+   Print (DM-friendly)
+   - Simple: prints page content cleanly
+   - We'll re-introduce 3x5 card printing after markup is final
+   ========================================================= */
+
+@media print{
+  body{ background: #fff; color: #000; }
+  .hero{ background: none !important; color: #000; border: none; padding: 1.5rem 0; }
+  .tagline{ color: #000 !important; }
+  .button, footer, .avatar{ display: none !important; }
+  .content{ max-width: 100%; padding: 0; }
+  .placeholder{ border-color: #999; }
+  a[href]:after { content: ""; }
+}
