@@ -1,36 +1,22 @@
-# =========================================================
-# McGravel Monster — Mutated Sewer Adder
-# =========================================================
-
+---
 layout: monster
-
-# Required
 title: Mutated Sewer Adder
 permalink: /monsters/mutated-sewer-adder/
 
-# Optional but recommended
 subtitle: A bloated serpent warped by filth and alchemy.
 description: A venomous sewer snake swollen by toxic runoff and forgotten experiments.
 
-# Organization / filtering
 tags: [beast, sewer, urban]
 role: striker
 
-# =========================================================
-# Statblock data
-# =========================================================
-
-# Identity
 size: Medium
 creature_type: beast
 alignment: unaligned
 
-# Core stats
 ac: 13 (natural armor)
 hp: 27 (5d8 + 5)
 speed: 30 ft., swim 30 ft.
 
-# Ability scores
 abilities:
   str: { score: 12, mod: "+1" }
   dex: { score: 14, mod: "+2" }
@@ -39,13 +25,11 @@ abilities:
   wis: { score: 10, mod: "+0" }
   cha: { score: 3,  mod: "-4" }
 
-# Optional lines
 skills: Stealth +4, Perception +2
 senses: darkvision 30 ft., passive Perception 12
-languages: —
+languages: "-"
 cr: 1 (200 XP)
 
-# Traits
 traits:
   - name: Sewer Camouflage
     text: >
@@ -56,7 +40,6 @@ traits:
     text: >
       The sewer adder has advantage on saving throws against poison and resistance to poison damage.
 
-# Actions
 actions:
   - name: Bite
     text: >
@@ -64,7 +47,6 @@ actions:
       <em>Hit:</em> 6 (1d8 + 2) piercing damage, and the target must succeed on a
       DC 12 Constitution saving throw or take 7 (2d6) poison damage and be poisoned
       until the end of its next turn.
-
 ---
 
 ## At a glance
