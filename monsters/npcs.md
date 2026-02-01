@@ -6,7 +6,7 @@ permalink: /monsters/npcs/
 
 <p class="page-intro">
 Everyday townsfolk, officials, and civilians. These NPCs are designed for social scenes,
-investigation, and low-level conflict—not heroic combat.
+investigation, and low-level conflict — not heroic combat.
 </p>
 
 <ul class="monster-list">
