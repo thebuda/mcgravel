@@ -5,12 +5,11 @@ description: Licensing and attribution information for McGravel.
 permalink: /legal/
 ---
 
-<main class="content">
-
 ## Creative Commons Attribution Notice
 
 This website includes material from the **System Reference Document 5.2 (SRD 5.2)**  
-© Wizards of the Coast LLC, released under the **Creative Commons Attribution 4.0 International License (CC-BY-4.0)**.
+© Wizards of the Coast LLC, released under the  
+**Creative Commons Attribution 4.0 International License (CC-BY-4.0)**.
 
 SRD content is used in accordance with the terms of that license.
 
@@ -20,7 +19,7 @@ SRD content is used in accordance with the terms of that license.
 
 Under the **CC-BY-4.0** license:
 
-- The SRD rules content may be used, shared, and adapted
+- SRD rules content may be used, shared, and adapted
 - Attribution to Wizards of the Coast LLC is required
 - The license is **irrevocable**
 
@@ -78,5 +77,3 @@ When required, attribution for SRD material should be given as follows:
 ## Contact
 
 Questions regarding licensing or permissions for original McGravel content may be directed to the site owner.
-
-</main>
