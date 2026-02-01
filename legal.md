@@ -1,8 +1,11 @@
 ---
-layout: page
+layout: default
 title: Legal & Licensing
+description: Licensing and attribution information for McGravel.
 permalink: /legal/
 ---
+
+<main class="content">
 
 ## Creative Commons Attribution Notice
 
@@ -16,6 +19,7 @@ SRD content is used in accordance with the terms of that license.
 ## What This License Means
 
 Under the **CC-BY-4.0** license:
+
 - The SRD rules content may be used, shared, and adapted
 - Attribution to Wizards of the Coast LLC is required
 - The license is **irrevocable**
@@ -30,6 +34,7 @@ https://creativecommons.org/licenses/by/4.0/
 ## Scope of SRD Content
 
 Material derived from SRD 5.2 on this site may include:
+
 - Core game mechanics and rules concepts
 - Creature statistics and abilities derived from the SRD
 - Conditions, actions, and terminology defined by the SRD
@@ -73,3 +78,5 @@ When required, attribution for SRD material should be given as follows:
 ## Contact
 
 Questions regarding licensing or permissions for original McGravel content may be directed to the site owner.
+
+</main>
