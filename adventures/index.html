@@ -1,125 +1,104 @@
 ---
+layout: default
 title: Adventures — McGravel
+description: Session-ready tabletop RPG adventures and modules by McGravel.
 permalink: /adventures/
 ---
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Adventures — McGravel</title>
-  <meta name="description" content="Session-ready tabletop RPG adventures and modules by McGravel." />
-  <link rel="stylesheet" href="/assets/css/main.css" />
-</head>
-<body>
+<header class="hero">
+  <div class="hero-inner">
 
-  <header class="hero">
-    <div class="hero-inner">
-
-      <div class="brand">
-        <div class="avatar">
-          <picture>
-            <source srcset="/assets/images/mcgravel-avatar-256.webp" type="image/webp">
-            <img src="/assets/images/mcgravel-avatar-256.jpg" alt="McGravel profile portrait">
-          </picture>
-        </div>
-
-        <div>
-          <h1>Adventures</h1>
-          <p class="tagline">Session-ready modules, written to run clean at the table.</p>
-        </div>
+    <div class="brand">
+      <div class="avatar">
+        <picture>
+          <source srcset="/assets/images/mcgravel-avatar-256.webp" type="image/webp">
+          <img src="/assets/images/mcgravel-avatar-256.jpg" alt="McGravel profile portrait">
+        </picture>
       </div>
 
-      <div class="cta-row">
-        <a class="button primary" href="/">Back to Home</a>
-        <a class="button" href="/monsters/">Browse Monsters</a>
+      <div>
+        <h1>Adventures</h1>
+        <p class="tagline">Session-ready modules, written to run clean at the table.</p>
       </div>
-
     </div>
-  </header>
 
-  <main class="content">
+    <div class="cta-row">
+      <a class="button primary" href="/">Back to Home</a>
+      <a class="button" href="/monsters/">Browse Monsters</a>
+    </div>
 
-    <section>
-      <h2>What to expect</h2>
-      <ul class="feature-list">
-        <li><strong>Clear structure:</strong> hooks, scenes, NPCs, and encounter flow</li>
-        <li><strong>Table-first:</strong> minimal fluff, usable read-aloud, printable sections</li>
-        <li><strong>Modular:</strong> steal a location, NPC, twist, or encounter without rewrites</li>
-      </ul>
+  </div>
+</header>
+
+<main class="content">
+
+  <section>
+    <h2>What to expect</h2>
+    <ul class="feature-list">
+      <li><strong>Clear structure:</strong> hooks, scenes, NPCs, and encounter flow</li>
+      <li><strong>Table-first:</strong> minimal fluff, usable read-aloud, printable sections</li>
+      <li><strong>Modular:</strong> steal a location, NPC, twist, or encounter without rewrites</li>
+    </ul>
+  </section>
+
+  {% assign adventures = site.pages | where: "layout", "adventure" | sort: "title" %}
+
+  {% if adventures.size == 0 %}
+    <section class="placeholder">
+      <h2>Nothing published yet</h2>
+      <p>
+        Adventures will appear here as they’re released. I’m aiming for modules that are quick to prep and easy to remix.
+      </p>
+      <p>
+        When entries exist, you’ll see at-a-glance info (level range, estimated time, and theme) plus downloads when available.
+      </p>
     </section>
+  {% else %}
+    <section>
+      <h2>Published adventures</h2>
 
-    {% assign adventures = site.pages | where: "layout", "adventure" | sort: "title" %}
+      <div class="card-grid">
+        {% for a in adventures %}
+          <article class="card">
+            <h3 class="card-title">
+              <a href="{{ a.url | relative_url }}">{{ a.title }}</a>
+            </h3>
 
-    {% if adventures.size == 0 %}
-      <section class="placeholder">
-        <h2>Nothing published yet</h2>
-        <p>
-          Adventures will appear here as they’re released. I’m aiming for modules that are quick to prep and easy to remix.
-        </p>
-        <p>
-          When entries exist, you’ll see at-a-glance info (level range, estimated time, and theme) plus downloads when available.
-        </p>
-      </section>
-    {% else %}
-      <section>
-        <h2>Published adventures</h2>
-
-        <div class="card-grid">
-          {% for a in adventures %}
-            <article class="card">
-              <h3 class="card-title">
-                <a href="{{ a.url | relative_url }}">{{ a.title }}</a>
-              </h3>
-
-              <div class="card-meta">
-                {% if a.level %}
-                  <span><strong>Level:</strong>
-                    {% if a.level.size %}
-                      {{ a.level | join: "–" }}
-                    {% else %}
-                      {{ a.level }}
-                    {% endif %}
-                  </span>
-                {% endif %}
-
-                {% if a.runtime %}
-                  <span><strong>Runtime:</strong> {{ a.runtime }}</span>
-                {% endif %}
-
-                {% if a.setting %}
-                  <span><strong>Setting:</strong> {{ a.setting }}</span>
-                {% endif %}
-
-                {% if a.environment %}
-                  <span><strong>Environment:</strong> {{ a.environment }}</span>
-                {% endif %}
-              </div>
-
-              {% if a.theme %}
-                <div class="card-tags">
-                  {% for t in a.theme %}
-                    <span class="tag">{{ t }}</span>
-                  {% endfor %}
-                </div>
+            <div class="card-meta">
+              {% if a.level %}
+                <span><strong>Level:</strong>
+                  {% if a.level.size %}
+                    {{ a.level | join: "–" }}
+                  {% else %}
+                    {{ a.level }}
+                  {% endif %}
+                </span>
               {% endif %}
-            </article>
-          {% endfor %}
-        </div>
-      </section>
-    {% endif %}
 
-  </main>
+              {% if a.runtime %}
+                <span><strong>Runtime:</strong> {{ a.runtime }}</span>
+              {% endif %}
 
-  <footer>
-    <p>Content © McGravel. Use at your table, reshare with attribution.</p>
-    <p class="support">
-      If you find this useful, you can
-      <a href="https://buymeacoffee.com/mcgravel" target="_blank" rel="noopener">buy me a beer</a>.
-    </p>
-    <p><a href="https://github.com/thebuda/mcgravel">View on GitHub</a></p>
-  </footer>
+              {% if a.setting %}
+                <span><strong>Setting:</strong> {{ a.setting }}</span>
+              {% endif %}
 
-</body>
-</html>
+              {% if a.environment %}
+                <span><strong>Environment:</strong> {{ a.environment }}</span>
+              {% endif %}
+            </div>
+
+            {% if a.theme %}
+              <div class="card-tags">
+                {% for t in a.theme %}
+                  <span class="tag">{{ t }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+</main>
