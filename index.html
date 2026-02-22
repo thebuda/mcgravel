@@ -1,27 +1,120 @@
----
-layout: default
-title: Easthold Campaign Setting
-permalink: /
-description: Future home of the Easthold campaign setting and associated tabletop RPG assets.
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>McGravel LLC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<main style="max-width: 720px; margin: 6rem auto; padding: 0 1.5rem; text-align: center;">
+  <style>
+    :root {
+      --bg-dark: #1C1C1C;
+      --bg-secondary: #2E3236;
+      --accent-rust: #7A3E1D;
+      --accent-gold: #B8860B;
+      --text-light: #F4F1EC;
+    }
 
-  <h1 style="margin-bottom: 1.25rem;">
-    Future Home of the Easthold Campaign Setting
-  </h1>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  <p style="font-size: 1.1rem; line-height: 1.6;">
-    This site is currently undergoing restructuring.
-  </p>
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+    }
 
-  <p style="font-size: 1.1rem; line-height: 1.6;">
-    Soon this page will host the complete Easthold campaign setting,
-    including monsters, adventures, and table-ready assets.
-  </p>
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
 
-  <p style="margin-top: 2.5rem; font-size: 0.95rem; opacity: 0.8;">
-    Built for Dungeon Masters. Designed for the table.
-  </p>
+    .logo {
+      max-width: 240px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 2rem;
+    }
 
-</main>
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      max-width: 600px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      background-color: var(--accent-gold);
+      margin: 2rem auto;
+      opacity: 0.7;
+    }
+
+    footer {
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+
+    footer a {
+      color: var(--accent-gold);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .tagline {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <img src="mcgravel-logo-cream.png" alt="McGravel Logo" class="logo">
+
+    <h1>McGravel LLC</h1>
+
+    <div class="divider"></div>
+
+    <p class="tagline">
+      McGravel LLC is the future home of carefully crafted creative works — 
+      from fantasy worlds and tabletop gameplay to stories, systems, and original design.
+      <br><br>
+      Built with intention. Forged with care.
+    </p>
+  </main>
+
+  <footer>
+    &copy; 2026 McGravel LLC. All rights reserved.
+  </footer>
+
+</body>
+</html>
